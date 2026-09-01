@@ -1,5 +1,5 @@
-import Input from "./Input"
-import Trainer from "./Trainer"
+import Input from "./components/Input"
+import Trainer from "./components/Trainer"
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <h1>React Demo</h1>
       <div>
         <h2>Components</h2>
-        <input type="text" />
+        <input type="text" minLength={1} maxLength={10} />
         <br />
         <Input />
         <br />
@@ -15,7 +15,8 @@ function App() {
         <br />
         <Input />
         <br />
-        <Trainer />
+        <Trainer name="JH" age={32} specialty="Java" />
+        <Trainer name="CG" age={33} specialty="Web" />
         <p>1 + 1</p>
         <p>{1 + 1}</p>
       </div>
