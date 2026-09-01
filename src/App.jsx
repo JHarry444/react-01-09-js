@@ -1,3 +1,4 @@
+import ExternalData from "./components/ExternalData"
 import Input from "./components/Input"
 import Trainer from "./components/Trainer"
 
@@ -7,7 +8,7 @@ function App() {
       <h1>React Demo</h1>
       <div>
         <h2>Components</h2>
-        <input type="text" minLength={1} maxLength={10} required />
+        <input type="text" minLength={1} maxLength={10} />
         <br />
         <Input />
         <br />
@@ -20,6 +21,9 @@ function App() {
         <Trainer name="PB" age={28} />
         <p>1 + 1</p>
         <p>{1 + 1}</p>
+      </div>
+      <div>
+        <ExternalData />
       </div>
     </div>
   )

@@ -2,7 +2,7 @@
 // <> is a React fragment, used to group multiple elements without adding extra nodes to the DOM.
 
 const Trainer = ({ name, age, specialty }) => {
-
+    // debugger;
     return (
         <>
             <p>Name: {name}</p>

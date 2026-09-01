@@ -1,0 +1,21 @@
+[
+    {
+        "name": "JH",
+        "age": 32,
+        "specialty": "JAVA"
+    },
+    {
+        "name": "CG",
+        "age": 33,
+        "specialty": "WEB"
+    },
+    {
+        "name": "PB",
+        "age": 28
+    },
+    {
+        "name": "MS",
+        "age": 45,
+        "specialty": "Oracle"
+    }
+]
