@@ -3,11 +3,11 @@ import Trainer from "./components/Trainer"
 
 function App() {
   return (
-    <div>
+    <div style={{ color: "red" }}>
       <h1>React Demo</h1>
       <div>
         <h2>Components</h2>
-        <input type="text" minLength={1} maxLength={10} />
+        <input type="text" minLength={1} maxLength={10} required />
         <br />
         <Input />
         <br />
@@ -15,8 +15,9 @@ function App() {
         <br />
         <Input />
         <br />
-        <Trainer name="JH" age={32} specialty="Java" />
+        <Trainer name="JH" age={32} specialty={"Java".toUpperCase()} />
         <Trainer name="CG" age={33} specialty="Web" />
+        <Trainer name="PB" age={28} />
         <p>1 + 1</p>
         <p>{1 + 1}</p>
       </div>
