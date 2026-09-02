@@ -4,6 +4,7 @@ import ExternalData from "./components/ExternalData"
 import Header from "./components/Header"
 import EventHandling from "./components/EventHandling"
 import StatePage from "./components/StatePage"
+import LiftingState from "./components/LiftingState"
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route path="/external" element={<ExternalData />} />
         <Route path="/events" element={<EventHandling />} />
         <Route path="/state" element={<StatePage />} />
+        <Route path="/lifting" element={<LiftingState />} />
+
       </Routes>
       <footer style={{ position: "fixed", bottom: "0px" }}>{new Date().toISOString()}</footer>
 
