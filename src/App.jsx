@@ -3,6 +3,7 @@ import ComponentsPage from "./components/ComponentsPage"
 import ExternalData from "./components/ExternalData"
 import Header from "./components/Header"
 import EventHandling from "./components/EventHandling"
+import StatePage from "./components/StatePage"
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
         <Route path="/components" element={<ComponentsPage />} />
         <Route path="/external" element={<ExternalData />} />
         <Route path="/events" element={<EventHandling />} />
+        <Route path="/state" element={<StatePage />} />
       </Routes>
-
+      <footer style={{ position: "fixed", bottom: "0px" }}>{new Date().toISOString()}</footer>
 
     </BrowserRouter>
   )
