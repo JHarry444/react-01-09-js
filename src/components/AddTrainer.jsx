@@ -1,6 +1,6 @@
 function AddTrainer({ setTrainers }) {
 
-    function addTrainer(formData) {
+    async function addTrainer(formData) {
         // Add trainer logic here
         console.log(formData);
         const newTrainer = {
@@ -9,7 +9,17 @@ function AddTrainer({ setTrainers }) {
             specialty: formData.get("specialty")
         };
         console.log(newTrainer);
-        setTrainers(prevTrainers => [...prevTrainers, newTrainer]);
+        const res = await fetch("http://localhost:8080/trainers", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newTrainer)
+        });
+
+        const addedTrainer = await res.json();
+
+        setTrainers(prevTrainers => [...prevTrainers, addedTrainer]);
     }
 
 
