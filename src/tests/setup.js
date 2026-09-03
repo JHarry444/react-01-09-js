@@ -4,5 +4,5 @@ import { afterEach } from 'vitest'
 
 // Clean the DOM after every test so test state never leaks between cases.
 afterEach(() => {
-  cleanup()
+    cleanup()
 })
