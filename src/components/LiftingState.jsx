@@ -32,7 +32,7 @@ function LiftingState() {
     return (
         <>
             <h2>Lifting State</h2>
-            <div>
+            <div id="liftingState">
                 <div>
                     <input type="text" value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Enter trainer name here..." />
                     <ListTrainers trainers={trainers.filter(trainer => trainer.name.toLowerCase().includes(filter.toLowerCase()))} />

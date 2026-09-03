@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 function AddTrainer({ setTrainers }) {
 
     async function addTrainer(formData) {
@@ -20,15 +22,18 @@ function AddTrainer({ setTrainers }) {
         const addedTrainer = await res.json();
 
         setTrainers(prevTrainers => [...prevTrainers, addedTrainer]);
+        nameRef.current.focus();
     }
+
+    const nameRef = useRef();
 
 
     return (
-        <>
+        <div>
             <h3>Add Trainer</h3>
-            <form action={addTrainer}>
+            <form action={addTrainer} id="trainerForm">
                 <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="name" />
+                <input type="text" id="name" name="name" ref={nameRef} />
 
                 <label htmlFor="age">Age:</label>
                 <input type="number" id="age" name="age" />
@@ -36,7 +41,7 @@ function AddTrainer({ setTrainers }) {
                 <input type="text" id="specialty" name="specialty" />
                 <button type="submit">Add Trainer</button>
             </form>
-        </>
+        </div>
     );
 }
 

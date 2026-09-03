@@ -7,6 +7,8 @@ import Header from "./components/Header"
 import EventHandling from "./components/EventHandling"
 import StatePage from "./components/StatePage"
 import LiftingState from "./components/LiftingState"
+import "./App.css"
+
 
 function App() {
 

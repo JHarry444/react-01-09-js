@@ -1,0 +1,10 @@
+#liftingState {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5%;
+}
+
+#trainerForm {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
