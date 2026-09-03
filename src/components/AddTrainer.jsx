@@ -1,8 +1,8 @@
-import { useRef } from "react";
+import { memo, useRef } from "react";
 
-function AddTrainer({ setTrainers }) {
+function AddTrainer({ addTrainer }) {
 
-    async function addTrainer(formData) {
+    async function formAction(formData) {
         // Add trainer logic here
         console.log(formData);
         const newTrainer = {
@@ -21,7 +21,7 @@ function AddTrainer({ setTrainers }) {
 
         const addedTrainer = await res.json();
 
-        setTrainers(prevTrainers => [...prevTrainers, addedTrainer]);
+        addTrainer(addedTrainer);
         nameRef.current.focus();
     }
 
@@ -31,7 +31,7 @@ function AddTrainer({ setTrainers }) {
     return (
         <div>
             <h3>Add Trainer</h3>
-            <form action={addTrainer} id="trainerForm">
+            <form action={formAction} id="trainerForm">
                 <label htmlFor="name">Name:</label>
                 <input type="text" id="name" name="name" ref={nameRef} />
 
@@ -41,8 +41,9 @@ function AddTrainer({ setTrainers }) {
                 <input type="text" id="specialty" name="specialty" />
                 <button type="submit">Add Trainer</button>
             </form>
+            {new Date().toISOString()}
         </div>
     );
 }
 
-export default AddTrainer;
+export default memo(AddTrainer);

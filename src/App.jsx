@@ -1,39 +1,56 @@
-import { BrowserRouter, Route, Routes } from "react-router"
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router"
+import TrainerPage from "./components/pages/TrainerPage"
 import MyList from "./components/MyList"
 import ThemeProvider from "./components/providers/ThemeProvider"
-import ComponentsPage from "./components/ComponentsPage"
+import ComponentsPage from "./components/pages/ComponentsPage"
 import ExternalData from "./components/ExternalData"
-import Header from "./components/Header"
 import EventHandling from "./components/EventHandling"
-import StatePage from "./components/StatePage"
-import LiftingState from "./components/LiftingState"
+import StatePage from "./components/pages/StatePage"
 import "./App.css"
+import RootLayout from "./components/pages/RootLayout"
+import trainerLoader from "./loaders/trainer-loader"
+import Loading from "./components/Loading"
 
-
-function App() {
-
-  return (
-    <ThemeProvider>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<h1>React Demo</h1>} />
-          <Route path="/components" element={<ComponentsPage />} />
-          <Route path="/external" element={<ExternalData />} />
-          <Route path="/events" element={<EventHandling />} />
-          <Route path="/state" element={<StatePage />} />
-          <Route path="/lifting" element={<LiftingState />} />
-          <Route path="/list" element={<MyList>
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<h1>React Demo</h1>} />
+      <Route path="components" element={<ComponentsPage />} />
+      <Route path="external" element={<ExternalData />} />
+      <Route path="events" element={<EventHandling />} />
+      <Route path="state" element={<StatePage />} />
+      <Route
+        path="lifting"
+        loader={trainerLoader}
+        lazy={async () => {
+          const { default: Component } = await import("./components/LiftingState")
+          return {
+            Component,
+          }
+        }}
+        HydrateFallback={<Loading />}
+      />
+      <Route path="trainer/:id" element={<TrainerPage />} />
+      <Route
+        path="list"
+        element={(
+          <MyList>
             <li>Item 1</li>
             <li>Item 2</li>
             <li>Item 3</li>
-          </MyList>} />
+          </MyList>
+        )}
+      />
+    </Route>,
+  ),
+)
 
-        </Routes>
-        <footer style={{ position: "fixed", bottom: "0px" }}>{new Date().toISOString()}</footer>
-      </BrowserRouter>
+function App() {
+  return (
+    <ThemeProvider>
+      <RouterProvider router={router} />
     </ThemeProvider>
-  );
+  )
 }
 
 export default App
