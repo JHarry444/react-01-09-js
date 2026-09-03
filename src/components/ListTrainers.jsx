@@ -10,7 +10,7 @@ function ListTrainers({ trainers }) {
             <h3>List of Trainers</h3>
             {
                 trainers.map(({ id, name, age, specialty }) => (
-                    <div onClick={() => navigate(`/trainers/${id}`)}>
+                    <div onClick={() => navigate(`/trainer/${id}`)}>
                         <Trainer key={v4()} name={name} age={age} specialty={specialty} />
                     </div>
                 ))

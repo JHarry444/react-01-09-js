@@ -1,5 +1,5 @@
-import Input from "./Input";
-import Trainer from "./Trainer";
+import Input from "../Input";
+import Trainer from "../Trainer";
 
 function Components() {
     return (
