@@ -24,9 +24,9 @@ function LiftingState() {
     }, []);
     // [] is the dependency array, leaving it blank ensures this effect runs only once, similar to componentDidMount
 
-    useEffect(() => {
-        fetchTrainers();
-    }, [filter]);
+    // useEffect(() => {
+    //     fetchTrainers();
+    // }, [filter]);
     // this useEffect will run whenever the filter changes, ensuring the trainers list is updated accordingly
     // essentially a componentWillUpdate
     return (

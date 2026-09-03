@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router"
+import MyList from "./components/MyList"
+import ThemeProvider from "./components/providers/ThemeProvider"
 import ComponentsPage from "./components/ComponentsPage"
 import ExternalData from "./components/ExternalData"
 import Header from "./components/Header"
@@ -7,22 +9,29 @@ import StatePage from "./components/StatePage"
 import LiftingState from "./components/LiftingState"
 
 function App() {
+
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<h1>React Demo</h1>} />
-        <Route path="/components" element={<ComponentsPage />} />
-        <Route path="/external" element={<ExternalData />} />
-        <Route path="/events" element={<EventHandling />} />
-        <Route path="/state" element={<StatePage />} />
-        <Route path="/lifting" element={<LiftingState />} />
+    <ThemeProvider>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<h1>React Demo</h1>} />
+          <Route path="/components" element={<ComponentsPage />} />
+          <Route path="/external" element={<ExternalData />} />
+          <Route path="/events" element={<EventHandling />} />
+          <Route path="/state" element={<StatePage />} />
+          <Route path="/lifting" element={<LiftingState />} />
+          <Route path="/list" element={<MyList>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+          </MyList>} />
 
-      </Routes>
-      <footer style={{ position: "fixed", bottom: "0px" }}>{new Date().toISOString()}</footer>
-
-    </BrowserRouter>
-  )
+        </Routes>
+        <footer style={{ position: "fixed", bottom: "0px" }}>{new Date().toISOString()}</footer>
+      </BrowserRouter>
+    </ThemeProvider>
+  );
 }
 
 export default App

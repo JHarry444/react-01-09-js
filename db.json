@@ -1,22 +1,28 @@
 {
-    "trainers": [
-        {
-            "id": 1,
-            "name": "JH",
-            "age": 32,
-            "specialty": "Java"
-        },
-        {
-            "id": 2,
-            "name": "CG",
-            "age": 33,
-            "specialty": "Web"
-        },
-        {
-            "id": 3,
-            "name": "JB",
-            "age": 28,
-            "specialty": "ServiceNow"
-        }
-    ]
+  "trainers": [
+    {
+      "id": 1,
+      "name": "JH",
+      "age": 32,
+      "specialty": "Java"
+    },
+    {
+      "id": 2,
+      "name": "CG",
+      "age": 33,
+      "specialty": "Web"
+    },
+    {
+      "id": 3,
+      "name": "JB",
+      "age": 28,
+      "specialty": "ServiceNow"
+    },
+    {
+      "name": "pb",
+      "age": 28,
+      "specialty": "DevOps",
+      "id": 4
+    }
+  ]
 }
