@@ -6,14 +6,15 @@ import { themeContext } from "../context";
 
 const Trainer = ({ name, age, specialty }) => {
     // debugger;
+    console.log("hello");
 
 
     const { theme } = useContext(themeContext)
     return (
         <div className={theme}>
-            <p>Name: {name}</p>
-            {age > 0 && <p>Age: {age}</p>}
-            {specialty && <p>Specialty: {specialty}</p>}
+            <p>{`Name: ${name}`}</p>
+            {age > 0 && <p>{`Age: ${age}`}</p>}
+            {specialty && <p>{`Specialty: ${specialty}`}</p>}
             {/* <img src="https://avatars.githubusercontent.com/u/41322826?v=4" />
             <img src={myPic} alt="" /> */}
         </div>

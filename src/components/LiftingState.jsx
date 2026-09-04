@@ -2,6 +2,7 @@ import { useCallback, useEffect, useReducer, useState } from "react";
 import AddTrainer from "./AddTrainer";
 import ListTrainers from "./ListTrainers";
 import { trainerReducer } from "./reducers";
+import useInterval from "../hooks/useInterval";
 
 function LiftingState() {
     const [trainers, dispatch] = useReducer(trainerReducer, []);
@@ -21,23 +22,17 @@ function LiftingState() {
         }
     }
 
-    //     const useInterval = (callback, delay) => {
-    //     useEffect(() => {
-    //         const interval = setInterval(callback, delay);
-    //         return () => clearInterval(interval);
-    //     }, [callback, delay]);
-    // };
 
-    // useInterval(fetchTrainers, 5_000);
+    useInterval(fetchTrainers, 5_000);
 
     // useEffect allows us to hook into the react lifecycle
-    useEffect(() => {
-        fetchTrainers();
-        const fetchTimer = setInterval(fetchTrainers, 5_000);
+    // useEffect(() => {
+    //     fetchTrainers();
+    //     const fetchTimer = setInterval(fetchTrainers, 5_000);
 
-        // any function you rerturn from a useEffect will be called when the component unmounts or before the effect runs again
-        return () => clearInterval(fetchTimer);
-    }, []);
+    //     // any function you rerturn from a useEffect will be called when the component unmounts or before the effect runs again
+    //     return () => clearInterval(fetchTimer);
+    // }, []);
     // [] is the dependency array, leaving it blank ensures this effect runs only once, similar to componentDidMount
 
     // useEffect(() => {
