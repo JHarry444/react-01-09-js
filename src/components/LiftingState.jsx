@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import AddTrainer from "./AddTrainer";
 import ListTrainers from "./ListTrainers";
+import { trainerReducer } from "./reducers";
 
 function LiftingState() {
-    const [trainers, setTrainers] = useState([]);
+    const [trainers, dispatch] = useReducer(trainerReducer, []);
+
+    const addTrainer = (trainer) => dispatch({ type: "ADD_TRAINER", payload: trainer });
+
+
     const [filter, setFilter] = useState("");
     const fetchTrainers = async () => {
         try {
             const res = await fetch("http://localhost:8080/trainers");
             const json = await res.json();
-            setTrainers(json);
+            dispatch({ type: "SET_TRAINERS", payload: json });
         } catch (error) {
             console.error("Error fetching trainers:", error);
         }
@@ -38,7 +43,7 @@ function LiftingState() {
                     <ListTrainers trainers={trainers.filter(trainer => trainer.name.toLowerCase().includes(filter.toLowerCase()))} />
 
                 </div>
-                <AddTrainer setTrainers={setTrainers} />
+                <AddTrainer addTrainer={addTrainer} />
             </div>
         </>
     );
