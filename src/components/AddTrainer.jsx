@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { memo, useRef } from "react";
 
 function AddTrainer({ addTrainer }) {
 
@@ -41,8 +41,9 @@ function AddTrainer({ addTrainer }) {
                 <input type="text" id="specialty" name="specialty" />
                 <button type="submit">Add Trainer</button>
             </form>
+            <p>{new Date().toISOString()}</p>
         </div>
     );
 }
 
-export default AddTrainer;
+export default memo(AddTrainer);

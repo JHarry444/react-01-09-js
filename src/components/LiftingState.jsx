@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useCallback, useEffect, useReducer, useState } from "react";
 import AddTrainer from "./AddTrainer";
 import ListTrainers from "./ListTrainers";
 import { trainerReducer } from "./reducers";
@@ -6,7 +6,8 @@ import { trainerReducer } from "./reducers";
 function LiftingState() {
     const [trainers, dispatch] = useReducer(trainerReducer, []);
 
-    const addTrainer = (trainer) => dispatch({ type: "ADD_TRAINER", payload: trainer });
+    const addTrainer = useCallback((trainer) => dispatch({ type: "ADD_TRAINER", payload: trainer }),
+        [dispatch]);
 
 
     const [filter, setFilter] = useState("");
@@ -19,6 +20,16 @@ function LiftingState() {
             console.error("Error fetching trainers:", error);
         }
     }
+
+    //     const useInterval = (callback, delay) => {
+    //     useEffect(() => {
+    //         const interval = setInterval(callback, delay);
+    //         return () => clearInterval(interval);
+    //     }, [callback, delay]);
+    // };
+
+    // useInterval(fetchTrainers, 5_000);
+
     // useEffect allows us to hook into the react lifecycle
     useEffect(() => {
         fetchTrainers();
